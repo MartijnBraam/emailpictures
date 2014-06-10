@@ -6,10 +6,13 @@ VALAPKGS=--pkg gtk+-3.0 --pkg gmodule-2.0
 VALAOPTS=
 
 default:
-	$(VALAC) $(VALAFILES) -o $(PRG_NAME) $(VALAPKGS) $(VALAOPTS)
+	$(VALAC) -X -DGETTEXT_PACKAGE="main" $(VALAFILES) -o $(PRG_NAME) $(VALAPKGS) $(VALAOPTS)
 
 run:
 	./$(PRG_NAME)
 
 clean:
 	rm -rf *.o $(PRG_NAME)
+
+pot:
+	xgettext --language=C --keyword=_ --escape --sort-output -o main.pot $(VALAFILES)

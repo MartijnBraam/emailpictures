@@ -1,5 +1,7 @@
 using Gtk;
 
+const string GETTEXT_PACKAGE = "main";
+
 public void on_SendButton_clicked(Button source){
     source.label = "Test";
     stdout.printf ("Click event!");
@@ -7,7 +9,12 @@ public void on_SendButton_clicked(Button source){
 
 int main (string[] args) {
     Gtk.init(ref args);
-    
+
+    Intl.setlocale(LocaleCategory.MESSAGES, "");
+    Intl.textdomain(GETTEXT_PACKAGE); 
+    Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8"); 
+    Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale"); 
+
     try{
         var builder = new Builder ();
         builder.add_from_file ("main.ui");
@@ -16,7 +23,7 @@ int main (string[] args) {
         window.show_all();
 
         var countLabel = builder.get_object("CountLabel") as Label;
-        countLabel.label = "You selected %d images".printf( args.length - 1 );
+        countLabel.label = _("You selected %d images").printf( args.length - 1 );
 
         Gtk.main ();
     } catch (Error e) {
