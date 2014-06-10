@@ -2,7 +2,7 @@ PRG_NAME=emailpictures
 
 VALAC=valac-0.22
 VALAFILES=main.vala
-VALAPKGS=--pkg gtk+-3.0
+VALAPKGS=--pkg gtk+-3.0 --pkg gmodule-2.0
 VALAOPTS=
 
 default:

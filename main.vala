@@ -1,23 +1,23 @@
 using Gtk;
 
+public void on_SendButton_clicked(Button source){
+    source.label = "Test";
+    stdout.printf ("Click event!");
+}
+
 int main (string[] args) {
     Gtk.init(ref args);
-
-    var window = new Window ();
-    window.title = "Mail pictures";
-    window.border_width = 10;
-    window.window_position = WindowPosition.CENTER;
-    window.set_default_size (350, 70);
-    window.destroy.connect (Gtk.main_quit);
     
-    var button = new Button.with_label ("Test");
-    button.clicked.connect (() => {
-        button.label = "Yay!";
-    });
-
-    window.add (button);
-    window.show_all ();
-
-    Gtk.main ();
+    try{
+        var builder = new Builder ();
+        builder.add_from_file ("main.ui");
+        builder.connect_signals (null);
+        var window = builder.get_object("EmailDialog") as Dialog;
+        window.show_all();
+        Gtk.main ();
+    } catch (Error e) {
+        stderr.printf ("Could not load UI: %s\n", e.message);
+        return 1;
+    }
     return 0;
 }
