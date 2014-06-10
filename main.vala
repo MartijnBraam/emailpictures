@@ -14,6 +14,10 @@ int main (string[] args) {
         builder.connect_signals (null);
         var window = builder.get_object("EmailDialog") as Dialog;
         window.show_all();
+
+        var countLabel = builder.get_object("CountLabel") as Label;
+        countLabel.label = "You selected %d images".printf( args.length - 1 );
+
         Gtk.main ();
     } catch (Error e) {
         stderr.printf ("Could not load UI: %s\n", e.message);
