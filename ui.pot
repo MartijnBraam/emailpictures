@@ -17,7 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.vala:26
-#, c-format
-msgid "You selected %d images"
+#: main.ui:7 main.ui:35
+msgid "Send pictures"
+msgstr ""
+
+#: main.ui:22
+msgid "Cancel"
+msgstr ""
+
+#: main.ui:65
+msgid "You selected n/a images"
+msgstr ""
+
+#: main.ui:80
+msgid "Send small images (max 1024 px)"
+msgstr ""
+
+#: main.ui:97
+msgid "Send large images (max 2048 px)"
+msgstr ""
+
+#: main.ui:113
+msgid "Fit in 10MB"
+msgstr ""
+
+#: main.ui:139
+msgid "Estimated size: n/a"
 msgstr ""

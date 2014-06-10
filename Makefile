@@ -16,3 +16,5 @@ clean:
 
 pot:
 	xgettext --language=C --keyword=_ --escape --sort-output -o main.pot $(VALAFILES)
+	xgettext --language=Glade --keyword=_ -o ui.pot *.ui
+	msgcat *.pot > all.pot
