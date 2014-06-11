@@ -34,9 +34,12 @@ int main (string[] args) {
         countLabel.label = _("You selected %d images\n").printf( args.length - 1 );
 
         Gdk.Pixbuf[] images = new Gdk.Pixbuf[args.length - 1];
-        for(int i = 1; i < args.length; i++){
+        for (int i = 1; i < args.length; i++){
             images[i] = new Gdk.Pixbuf.from_file(args[i]);
-            stdout.printf("Loaded %s\n", args[i]);
+            File file = File.new_for_path(args[i]);
+            FileInfo file_info = file.query_info("standard::size", FileQueryInfoFlags.NONE);
+            int64 file_size = file_info.get_size();
+            stdout.printf("Loaded %s: %" + uint64.FORMAT_MODIFIER + "d bytes\n", args[i], file_size);
         }
 
         Gtk.main ();
