@@ -3,7 +3,11 @@ using Gtk;
 const string GETTEXT_PACKAGE = "main";
 
 public void on_SendButton_clicked(Button source){
-    Process.spawn_command_line_async("gedit");
+    var subject = _("Message with images");
+    var body = _("Hello, \n\nHere are some images");
+    var mailprog = "thunderbird";
+    var command = @"$mailprog -compose \"subject='$subject',body='$body'\"";
+    Process.spawn_command_line_async(command);
     Gtk.main_quit();
 }
 
