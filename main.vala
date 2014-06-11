@@ -31,7 +31,13 @@ int main (string[] args) {
         window.show_all();
 
         var countLabel = builder.get_object("CountLabel") as Label;
-        countLabel.label = _("You selected %d images").printf( args.length - 1 );
+        countLabel.label = _("You selected %d images\n").printf( args.length - 1 );
+
+        Gdk.Pixbuf[] images = new Gdk.Pixbuf[args.length - 1];
+        for(int i = 1; i < args.length; i++){
+            images[i] = new Gdk.Pixbuf.from_file(args[i]);
+            stdout.printf("Loaded %s\n", args[i]);
+        }
 
         Gtk.main ();
     } catch (Error e) {
