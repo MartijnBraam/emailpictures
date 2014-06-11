@@ -3,8 +3,8 @@ using Gtk;
 const string GETTEXT_PACKAGE = "main";
 
 public void on_SendButton_clicked(Button source){
-    source.label = "Test";
-    stdout.printf ("Click event!");
+    Process.spawn_command_line_async("gedit");
+    Gtk.main_quit();
 }
 
 public void on_CancelButton_clicked(Button source){
