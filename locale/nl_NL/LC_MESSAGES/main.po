@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-11 00:10+0200\n"
-"PO-Revision-Date: 2014-06-11 00:11+0200\n"
+"POT-Creation-Date: 2014-06-11 21:17+0200\n"
+"PO-Revision-Date: 2014-06-11 21:20+0100\n"
 "Last-Translator: Martijn Braam <info@brixit.nl>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -16,13 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: main.vala:26
+#: main.vala:7
+msgid ""
+"Hello, \n"
+"\n"
+"Here are some images"
+msgstr ""
+"Hallo, \n"
+"\n"
+"Hier zijn een paar afbeeldingen"
+
+#: main.vala:6
+msgid "Message with images"
+msgstr "Bericht met afbeeldingen"
+
+#: main.vala:34
 #, c-format
 msgid "You selected %d images"
 msgstr "U hebt %d afbeeldingen geselecteerd"
 
-#: main.ui:7 main.ui:35
+#: main.ui:7 main.ui:36
 msgid "Send pictures"
 msgstr "Afbeeldingen versturen"
 
@@ -30,22 +45,22 @@ msgstr "Afbeeldingen versturen"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: main.ui:65
+#: main.ui:66
 msgid "You selected n/a images"
 msgstr "U heeft geen afbeeldingen geselecteerd"
 
-#: main.ui:80
+#: main.ui:81
 msgid "Send small images (max 1024 px)"
 msgstr "Verstuur kleine afbeeldingen (maximaal 1024 px)"
 
-#: main.ui:97
+#: main.ui:98
 msgid "Send large images (max 2048 px)"
 msgstr "Verstuur grote afbeeldingen (maximaal 2048 px)"
 
-#: main.ui:113
+#: main.ui:114
 msgid "Fit in 10MB"
 msgstr "Maximaal 10MB"
 
-#: main.ui:139
+#: main.ui:140
 msgid "Estimated size: n/a"
 msgstr "Geschatte grootte: n/a"
