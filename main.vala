@@ -1,6 +1,11 @@
 using Gtk;
 
 const string GETTEXT_PACKAGE = "main";
+const int SENDMODE_ORIGINAL = 1;
+const int SENDMODE_1K = 2;
+const int SENDMODE_2K = 3;
+const int SENDMODE_10MB = 4;
+int send_mode = 1;
 
 public void on_SendButton_clicked(Button source){
     var subject = _("Message with images");
@@ -13,6 +18,26 @@ public void on_SendButton_clicked(Button source){
 
 public void on_CancelButton_clicked(Button source){
     Gtk.main_quit();
+}
+
+public void on_SizeRadio_group_changed(RadioButton source){
+    if (source.get_active()){
+        stdout.printf("%s\n", source.name);
+        switch (source.name) {
+            case "OriginalRadio":
+                send_mode = SENDMODE_ORIGINAL;
+                break;
+            case "SmallRadio":
+                send_mode = SENDMODE_1K;
+                break;
+            case "BigRadio":
+                send_mode = SENDMODE_2K;
+                break;
+            case "MaxRadio":
+                send_mode = SENDMODE_10MB;
+                break;
+        }
+    }
 }
 
 int main (string[] args) {
@@ -34,13 +59,19 @@ int main (string[] args) {
         countLabel.label = _("You selected %d images\n").printf( args.length - 1 );
 
         Gdk.Pixbuf[] images = new Gdk.Pixbuf[args.length - 1];
+        int64 total_size = 0;
         for (int i = 1; i < args.length; i++){
             images[i] = new Gdk.Pixbuf.from_file(args[i]);
             File file = File.new_for_path(args[i]);
             FileInfo file_info = file.query_info("standard::size", FileQueryInfoFlags.NONE);
             int64 file_size = file_info.get_size();
+            total_size += file_size;
             stdout.printf("Loaded %s: %" + uint64.FORMAT_MODIFIER + "d bytes\n", args[i], file_size);
         }
+        stdout.printf("Total: %s\n", format_size_for_display(total_size));
+
+        var originalSizeLabel = builder.get_object("OriginalSizeLabel") as Label;
+        originalSizeLabel.label = _("Original size: %s").printf( format_size_for_display(total_size));
 
         Gtk.main ();
     } catch (Error e) {
