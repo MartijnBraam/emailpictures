@@ -6,12 +6,25 @@ const int SENDMODE_1K = 2;
 const int SENDMODE_2K = 3;
 const int SENDMODE_10MB = 4;
 int send_mode = 1;
+Gdk.Pixbuf[] images = null;
+string[] original_images = null;
 
 public void on_SendButton_clicked(Button source){
     var subject = _("Message with images");
     var body = _("Hello, \n\nHere are some images");
     var mailprog = "thunderbird";
-    var command = @"$mailprog -compose \"subject='$subject',body='$body'\"";
+    var command = @"$mailprog -compose \"subject='$subject',body='$body',attachment='";
+    switch (send_mode){
+        case SENDMODE_ORIGINAL:
+            for (int i = 0; i < original_images.length; i++){
+                var attachment = original_images[i];
+                command += @"file://$attachment,";
+            }
+            break;
+    }
+    command = command.substring(0, command.length-1);
+    command += "'\"";
+    stdout.printf("Start: %s\n", command);
     Process.spawn_command_line_async(command);
     Gtk.main_quit();
 }
@@ -57,8 +70,8 @@ int main (string[] args) {
 
         var countLabel = builder.get_object("CountLabel") as Label;
         countLabel.label = _("You selected %d images\n").printf( args.length - 1 );
-
-        Gdk.Pixbuf[] images = new Gdk.Pixbuf[args.length - 1];
+        original_images = args[1:args.length];
+        images = new Gdk.Pixbuf[args.length - 1];
         int64 total_size = 0;
         for (int i = 1; i < args.length; i++){
             images[i] = new Gdk.Pixbuf.from_file(args[i]);
