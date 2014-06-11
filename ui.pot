@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-11 21:17+0200\n"
+"POT-Creation-Date: 2014-06-11 23:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,18 +29,26 @@ msgstr ""
 msgid "You selected n/a images"
 msgstr ""
 
-#: main.ui:81
+#: main.ui:78
+msgid "Original size: n/a"
+msgstr ""
+
+#: main.ui:93
+msgid "Send original images"
+msgstr ""
+
+#: main.ui:111
 msgid "Send small images (max 1024 px)"
 msgstr ""
 
-#: main.ui:98
+#: main.ui:130
 msgid "Send large images (max 2048 px)"
 msgstr ""
 
-#: main.ui:114
+#: main.ui:149
 msgid "Fit in 10MB"
 msgstr ""
 
-#: main.ui:140
+#: main.ui:177
 msgid "Estimated size: n/a"
 msgstr ""
