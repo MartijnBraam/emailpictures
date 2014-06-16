@@ -86,6 +86,20 @@ int main (string[] args) {
         var originalSizeLabel = builder.get_object("OriginalSizeLabel") as Label;
         originalSizeLabel.label = _("Original size: %s").printf( format_size_for_display(total_size));
 
+        var programCombo = builder.get_object("ProgramCombo") as ComboBox;
+        ListStore programList = new ListStore (1, typeof (string));
+        string[] programs = {"Thunderbird"};
+        for (int i = 0; i < programs.length; i++){
+            TreeIter iter;
+            programList.append(out iter);
+            programList.set (iter, 0, programs[i]);
+        }
+        programCombo.set_model(programList);
+        CellRendererText renderer = new CellRendererText();
+        programCombo.pack_start(renderer, true);
+        programCombo.add_attribute(renderer, "text", 1);
+        programCombo.active = 0;
+
         Gtk.main ();
     } catch (Error e) {
         stderr.printf ("Could not load UI: %s\n", e.message);
